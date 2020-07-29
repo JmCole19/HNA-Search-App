@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 class ResultPage extends Component {
     render() {
-        const result = this.props.result ? (
+        const content = this.props.result ? (
             <div className='result'>
                 <h4 className='center'>
-                    {this.props.result.title}
+                    {this.props.content.title}
                 </h4>
                 <p>
-                    {this.props.result.body}
+                    {this.props.content.body}
                 </p>
             </div>
         ) : (
@@ -20,16 +20,16 @@ class ResultPage extends Component {
 
         return (
             <div className="container">
-                {result}
+                {content}
             </div>
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let id = ownProps.match.params.result_id;
+    let id = ownProps.match.params.content_id;
     return {
-        result: state.results.find(result => result.id === id)
+        content: state.contents.find(content => content.id === id)
     }
 }
 
