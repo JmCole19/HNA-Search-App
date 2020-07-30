@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData } from '../actions/resultsAction';
 
 class ResultPage extends Component {
-    state = {}
-
-    componentDidMount() {
-        this.props.getData();
-    }
-
     render() {
         const content = this.props.result ? (
             <div className='result'>
@@ -36,8 +29,8 @@ class ResultPage extends Component {
 const mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.content_id;
     return {
-        content: state.contents.find(content => content.created_at_i === id)
+        content: state.contents.find(content => content.id === id)
     }
 }
 
-export default connect(mapStateToProps, {getData})(ResultPage);
+export default connect(mapStateToProps)(ResultPage);

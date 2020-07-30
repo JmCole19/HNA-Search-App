@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import { combineReducers } from 'redux'
-import dataReducer from './dataReducer'
-import searchReducer from './searchReducer'
-
-export default combineReducers({
-  dataReducer,
-  searchReducer
-})
-=======
 import {
     RECEIVE_POSTS,
     REQUEST_POSTS,
@@ -85,4 +75,3 @@ const rootReducer = combineReducers({
 })
 
 export default (rootReducer, searchReducer);
->>>>>>> parent of 6a5ae3d... able to console.log(data)
