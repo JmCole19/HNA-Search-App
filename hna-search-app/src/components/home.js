@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
 class Home extends Component {
     render() {
-        const {items} = this.props;
-        const itemList = items.length ? (
-            items.map(item => {
+        const { results } = this.props;
+        const resultList = results.length ? (
+            results.map(result => {
                 return (
-                    <Card className="item card" key={item.created_at_i}>
-                        <Card.Header>{item.author}</Card.Header>
-                        <Card.Body>
-                            <Card.Title>{item.title}</Card.Title>
-                            <Card.Text>
-                                {item.text}
-                            </Card.Text>
-                            <Link to={'/results/' + item.id}><Button variant="primary">Click for more</Button></Link>
-                        </Card.Body>
-                    </Card>
+                    <div className="result card" key={result.id}>
+                        <h1>{result.title}</h1>
+                        <p>{result.body}</p>
+                        <Link to={'/results/' + result.id}><button>Click Here!</button></Link>
+                    </div>
                 )
             })
         ) : (
@@ -29,14 +22,16 @@ class Home extends Component {
             )
         return (
             <div className='container home'>
-                {itemList}
+                {resultList}
             </div>
         )
     }
 }
 
-const mapStateToProps = ({ items = [] }) => ({
-    items
-})
+const mapStateToProps = (state) => {
+    return {
+        results: state.results
+    }
+}
 
 export default connect(mapStateToProps)(Home);
