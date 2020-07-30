@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { getData } from '../actions/resultsAction';
+import store from '../index';
 
 class Home extends Component {
     state = {}
 
     componentDidMount() {
-        this.props.getData();
+        store.dispatch(getData)
     }
 
     render() {
-        const items = this.props;
+        const {items} = this.props;
         const itemList = items.length ? (
             items.map(item => {
                 return (
@@ -34,8 +35,6 @@ class Home extends Component {
                     Start typing to search!
                 </div>
             )
-
-        console.log(items)
         return (
             <div className='container home'>
                 {itemList}
@@ -44,10 +43,8 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        items: state.props
-    }
-}
+const mapStateToProps = ({ items = [] }) => ({
+    items
+})
 
-export default connect(mapStateToProps, {getData})(Home);
+export default connect(mapStateToProps, { getData })(Home);

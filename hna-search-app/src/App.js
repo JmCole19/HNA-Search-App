@@ -5,16 +5,8 @@ import Home from './components/home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import resultPage from './components/resultPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getData } from './actions/resultsAction';
-import { connect } from 'react-redux';
 
 class App extends Component {
-  state = {}
-
-  componentDidMount() {
-    this.props.getData();
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -31,8 +23,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ data = {} }) => ({
-  data
-});
-
-export default connect(mapStateToProps, { getData })(App);
+export default App;
