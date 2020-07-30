@@ -1,25 +1,77 @@
-import { SEARCH } from '../actions/searchAction';
+import {
+    RECEIVE_POSTS,
+    REQUEST_POSTS,
+    SELECT_POST,
+    INVALIDATE_POST
+} from '../actions/resultsAction';
+import { combineReducers } from 'redux';
+import {SEARCH} from '../actions/searchAction';
 
-const initState = {
-    contents: [
-        { id: '1', title: 'TestData1', body: "This is a test for data set 1" },
-        { id: '2', title: "RestData2", body: 'This is a test for data set 2' },
-        { id: '3', title: 'BestData3', body: 'This is a test for data set 3' }
-    ],
-    value: '',
-    results: []
+function selectedPost(state = 'reactjs', action) {
+    switch (action.type) {
+      case SELECT_POST:
+        return action.post
+      default:
+        return state
+    }
+  }
+
+function posts(state = {
+    isFetching: false,
+    didInvalidate: false,
+    items: [],
+}, action) {
+    switch (action.type) {
+        case REQUEST_POSTS:
+            return Object.assign({}, state, {
+                isFetching: true,
+                didInvalidate: false
+            })
+        case RECEIVE_POSTS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                didInvalidate: false,
+                items: action.posts,
+                lastUpdated: action.receivedAt
+            })
+        default:
+            return state
+    }
 }
 
-const rootReducer = (state = initState, action) => {
+function displayPosts(state = {}, action) {
+    switch (action.type) {
+        case INVALIDATE_POST:
+        case RECEIVE_POSTS:
+        case REQUEST_POSTS:
+            return Object.assign({}, state, {
+                [action.post]: posts(state[action.post], action)
+            })
+        default:
+            return state
+    }
+}
+
+const initState = {
+    value: '',
+    items: []
+}
+
+const searchReducer = (state = initState, action) => {
     switch (action.type) {
         case SEARCH: {
             let { value } = action;
-            const results = state.contents.filter((content) => content.title.toLowerCase().includes(state.value.toLowerCase()));
-            return { ...state, value, results };
+            const items = state.items.filter((item) => item.title.toLowerCase().includes(state.value.toLowerCase()));
+            return { ...state, value, items };
         }
         default:
             return state;
     }
 }
 
-export default rootReducer;
+const rootReducer = combineReducers({
+    displayPosts,
+    selectedPost,
+})
+
+export default (rootReducer, searchReducer);
