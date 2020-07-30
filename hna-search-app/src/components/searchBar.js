@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { search } from '../actions/searchAction';
+import { getData } from '../actions/resultsAction';
 
 class SearchBar extends Component {
+    state = {}
+
+    componentDidMount() {
+        this.props.getData();
+    }
+
     render() {
-        const { search, value } = this.props;
+        const { value } = this.props;
 
         return (
             <input
@@ -18,12 +25,17 @@ class SearchBar extends Component {
     }
 }
 
-function mapStateToProps({ items }) {
-    return { value: items.value };
+const mapStateToProps = state => {
+    return {
+        value: state.value
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ search }, dispatch);
+    return {
+        search: (search) => dispatch(search),
+        getData: (data) => dispatch(getData)
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

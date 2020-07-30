@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/searchBar';
 import Home from './components/home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import resultPage from './components/resultPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { getData } from './actions/resultsAction';
+import { connect } from 'react-redux';
 
+class App extends Component {
+  state = {}
 
-function App() {
+  componentDidMount() {
+    this.props.getData();
+  }
+
+  render() {
     return (
       <BrowserRouter>
         <div className='App'>
@@ -18,8 +26,13 @@ function App() {
             <Route path='/results/:result_id' component={resultPage} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
+}
 
-export default App;
+const mapStateToProps = ({ data = {} }) => ({
+  data
+});
+
+export default connect(mapStateToProps, { getData })(App);

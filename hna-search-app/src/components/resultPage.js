@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getData } from '../actions/resultsAction';
 
 class ResultPage extends Component {
+    state = {}
+
+    componentDidMount() {
+        this.props.getData();
+    }
+
     render() {
         const content = this.props.result ? (
             <div className='result'>
@@ -33,4 +40,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(ResultPage);
+export default connect(mapStateToProps, {getData})(ResultPage);

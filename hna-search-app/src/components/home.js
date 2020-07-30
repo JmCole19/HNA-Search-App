@@ -3,26 +3,17 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+import { getData } from '../actions/resultsAction';
 
 class Home extends Component {
-
-    state = {
-        items: []
-    }
+    state = {}
 
     componentDidMount() {
-        return axios.get('http://hn.algolia.com/api/v1/search?query=...')
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    items: res.data.hits
-                })
-            })
+        this.props.getData();
     }
 
     render() {
-        const { items } = this.state;
+        const items = this.props;
         const itemList = items.length ? (
             items.map(item => {
                 return (
@@ -53,10 +44,10 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        items: state.items
+        items: state.props
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, {getData})(Home);
