@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+<<<<<<< HEAD
 import { getData } from '../actions/resultsAction';
 import store from '../index';
 
@@ -13,6 +14,10 @@ class Home extends Component {
         store.dispatch(getData)
     }
 
+=======
+
+class Home extends Component {
+>>>>>>> parent of 6a5ae3d... able to console.log(data)
     render() {
         const {items} = this.props;
         const itemList = items.length ? (
