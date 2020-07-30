@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 class Home extends Component {
+
+    componentDidMount(){
+      return axios.get('http://hn.algolia.com/api/v1/items/1')
+        .then(res => console.log(res))
+    }
+
     render() {
         const { items } = this.props;
         const itemList = items.length ? (
