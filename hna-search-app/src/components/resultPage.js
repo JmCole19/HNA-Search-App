@@ -29,7 +29,7 @@ class ResultPage extends Component {
 const mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.content_id;
     return {
-        content: state.contents.find(content => content.id === id)
+        content: state.contents.find(content => content.created_at_i === id)
     }
 }
 

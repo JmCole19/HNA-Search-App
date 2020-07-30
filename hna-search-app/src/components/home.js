@@ -7,20 +7,29 @@ import axios from 'axios';
 
 class Home extends Component {
 
-    componentDidMount(){
-      return axios.get('http://hn.algolia.com/api/v1/items/1')
-        .then(res => console.log(res))
+    state = {
+        items: []
+    }
+
+    componentDidMount() {
+        return axios.get('http://hn.algolia.com/api/v1/search?query=...')
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    items: res.data.hits
+                })
+            })
     }
 
     render() {
-        const { items } = this.props;
+        const { items } = this.state;
         const itemList = items.length ? (
             items.map(item => {
                 return (
-                    <Card className="item card" key={item.id}>
-                        <Card.Header>{item.title}</Card.Header>
+                    <Card className="item card" key={item.created_at_i}>
+                        <Card.Header>{item.author}</Card.Header>
                         <Card.Body>
-                            <Card.Title>{item.author}</Card.Title>
+                            <Card.Title>{item.title}</Card.Title>
                             <Card.Text>
                                 {item.text}
                             </Card.Text>
@@ -35,7 +44,7 @@ class Home extends Component {
                 </div>
             )
 
-            console.log(items)
+        console.log(items)
         return (
             <div className='container home'>
                 {itemList}
