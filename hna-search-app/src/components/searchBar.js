@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { search } from '../actions/searchAction';
-// import { fetchPosts } from '../actions/resultsAction';
 
 class SearchBar extends Component {
-
-    // componentDidMount() {
-    //     this.props.dispatch(fetchPosts())
-    // }
-
     render() {
         const { search, value } = this.props;
 

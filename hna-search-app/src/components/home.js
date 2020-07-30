@@ -3,14 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-// import { fetchPosts } from '../actions/resultsAction'
 
 class Home extends Component {
-
-    // componentDidMount() {
-    //     this.props.dispatch(fetchPosts())
-    // }
-
     render() {
         const { items } = this.props;
         const itemList = items.length ? (

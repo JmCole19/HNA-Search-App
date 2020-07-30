@@ -35,14 +35,14 @@ function receivePosts(post, json) {
     }
 }
 
-export function fetchPosts(post) {
+function fetchPosts(subreddit) {
     return dispatch => {
-        dispatch(requestPosts(post))
-        return axios.get('http://hn.algolia.com/api/v1/search?query=...')
+      dispatch(requestPosts(subreddit))
+      return axios.get('http://hn.algolia.com/api/v1/search?query=...')
         .then(response => response.json())
-        .then(json => dispatch(receivePosts(post, json)))
+        .then(json => dispatch(receivePosts(subreddit, json)))
     }
-}
+  }
 
 export function shouldFetchPosts(state, post) {
     const posts = state.posts[post]
