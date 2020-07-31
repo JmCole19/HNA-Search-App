@@ -16,7 +16,7 @@ const reducer = (state = initState, action) => {
         case FETCH_DATA_SUCCESS:
             return {
                 loading: false,
-                posts: action.payload,
+                posts: action.payload.hits,
                 error: ''
             }
         case FETCH_DATA_FAILURE:

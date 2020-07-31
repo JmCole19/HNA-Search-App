@@ -8,14 +8,15 @@ import {
 export const fetchData = () => {
     return (dispatch) => {
         dispatch(fetchDataRequest())
-        axios.get("http://hn.algolia.com/api/v1/search?tags=front_page")
-        .then(response => {
-            const posts = response.data
-            dispatch(fetchDataSuccess(posts))
-        })
-        .catch(error => {
-            dispatch(fetchDataFailure(error.message))
-        })
+        axios
+            .get("https://hn.algolia.com/api/v1/search?query=redux")
+            .then(response => {
+                const posts = response.data
+                dispatch(fetchDataSuccess(posts))
+            })
+            .catch(error => {
+                dispatch(fetchDataFailure(error.message))
+            })
     }
 }
 

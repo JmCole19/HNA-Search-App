@@ -3,8 +3,9 @@ import './App.css';
 import SearchBar from './components/searchBar';
 // import Home from './components/home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import resultPage from './components/resultPage';
+// import resultPage from './components/resultPage';
 import DataContainer from './components/dataContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -14,7 +15,6 @@ function App() {
         <SearchBar />
         <Switch>
           <Route path="/" exact={true} component={DataContainer} />
-          <Route path='/results/:result_id' component={resultPage} />
           {/* <Route path='/testData' component={} /> */}
         </Switch>
       </div>
