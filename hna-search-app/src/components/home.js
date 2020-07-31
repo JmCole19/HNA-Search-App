@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchData } from '../actions/fetchData';
+
 
 class Home extends Component {
+
     render() {
         const { results } = this.props;
         const resultList = results.length ? (
@@ -30,8 +33,14 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        results: state.results
+        results: state.posts
     }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: () => dispatch(fetchData())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

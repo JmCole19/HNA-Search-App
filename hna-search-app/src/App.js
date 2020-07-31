@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import SearchBar from './components/searchBar';
-import Home from './components/home';
+// import Home from './components/home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import resultPage from './components/resultPage';
+import DataContainer from './components/dataContainer';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <h1 style={{textAlign: 'center'}}>Search for Hacker News!</h1>
         <SearchBar />
         <Switch>
-          <Route path="/" exact={true} component={Home} />
+          <Route path="/" exact={true} component={DataContainer} />
           <Route path='/results/:result_id' component={resultPage} />
           {/* <Route path='/testData' component={} /> */}
         </Switch>

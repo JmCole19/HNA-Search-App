@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { search } from '../actions/searchAction';
+import { fetchData } from '../actions/fetchData';
 
 class SearchBar extends Component {
     render() {
@@ -17,12 +18,14 @@ class SearchBar extends Component {
     }
 }
 
-function mapStateToProps({ results }) {
-    return { value: results.value };
+function mapStateToProps(state) {
+    return { 
+        results: state.posts
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ search }, dispatch);
+    return bindActionCreators({ search }, {fetchData}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
