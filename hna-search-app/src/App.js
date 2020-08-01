@@ -12,7 +12,7 @@ function App() {
         <h1 style={{textAlign: 'center'}}>Search for Hacker News!</h1>
         <Switch>
           <Route path="/" exact={true} component={HomePage} />
-          <Route path='/results/:id' component={HistoryPage}/>
+          <Route path='/history' component={HistoryPage}/>
         </Switch>
       </div>
     </BrowserRouter>
