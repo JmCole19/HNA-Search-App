@@ -1,36 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../actions/fetchData';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
-function DataContainer({ results, fetchData }) {
-    useEffect(() => {
-        fetchData()
-    }, [])
-    return results.loading ? (
-        <h2>Loading...</h2>
-    ) : results.error ? (
-        <h2>{results.error}</h2>
-    ) : (
-                <div>
-                    <h1>Posts</h1>
-                    {results && results.posts && results.posts.map(result =>
-                        <div className ="cardDiv" key={result.objectID}>
-                            <Card>
-                                <Card.Header>By: {result.author}</Card.Header>
-                                <Card.Body>
-                                    <Card.Title>{result.title}</Card.Title>
-                                    <Card.Text>
-                                        {result.body}
-                                    </Card.Text>
-                                    <Button variant="primary" href={result.url}>See Article</Button>
-                                </Card.Body>
-                            </Card>
-                            {'\n'}
-                        </div>)}
-                </div>
+class DataContainer extends Component {
+
+    handleSearchResults = () => {
+        if (this.props.length === 0) {
+            return (
+                <div> No results!</div>
             )
+        } else {
+            const results = this.props;
+            return (
+                <div>
+                        <h1>Posts</h1>
+                        {results && results.posts && results.posts.map(result =>
+                            <div className="cardDiv" key={result.objectID}>
+                                <Card className='mx-auto' style={{ width: '700px', marginBottom: '20px' }}>
+                                    <Card.Header>By: {result.author}</Card.Header>
+                                    <Card.Body>
+                                        <Card.Title>{result.title}</Card.Title>
+                                        <Card.Text>
+                                            {result.body}
+                                        </Card.Text>
+                                        <Button variant="primary" href={result.url}>See Article</Button>
+                                    </Card.Body>
+                                </Card>
+                                {'\n'}
+                            </div>)}
+                    </div>
+            )
+        }
+    }
+
+    render() {
+        return this.props.loading ? (
+            <h2>Loading...</h2>
+        ) : this.props.error ? (
+            <h2>{this.props.error}</h2>
+        ) : (
+                    <div>
+                        {this.handleSearchResults()}
+                    </div>
+                )
+    }
 }
 
 const mapStateToProps = state => {

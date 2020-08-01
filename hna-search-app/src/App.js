@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/searchBar';
-// import Home from './components/home';
+import HomePage from './components/homePage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import resultPage from './components/resultPage';
-import DataContainer from './components/dataContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HistoryPage from './components/historyPage'
 
 function App() {
   return (
     <BrowserRouter>
       <div className='App'>
         <h1 style={{textAlign: 'center'}}>Search for Hacker News!</h1>
-        <SearchBar />
         <Switch>
-          <Route path="/" exact={true} component={DataContainer} />
-          {/* <Route path='/testData' component={} /> */}
+          <Route path="/" exact={true} component={HomePage} />
+          <Route path='/results/:id' component={HistoryPage}/>
         </Switch>
       </div>
     </BrowserRouter>

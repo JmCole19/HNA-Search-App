@@ -1,30 +1,55 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
-// import { SEARCH } from '../actions/searchAction';
+import { searchData, fetchData } from '../actions/fetchData';
 
 class SearchBar extends Component {
+    state = {
+        currentInput: ''
+    }
 
-    renderInput(field) {
-        return <input type="text" placeholder="Search" />
+
+    handleInputChange = (event) => {
+        let newInput = event.target.value;
+        this.setState({
+            currentInput: newInput
+        });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.searchData(this.state.currentInput)
+        this.props.fetchData(this.state.currentInput)
     }
 
     render() {
-
-        const { handleSubmit } = this.props
-
         return (
-            <form>
-                <Field name="query" component={this.renderInput}/>
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    className="mx-auto"
+                    placeholder="Search"
+                    type='search'
+                    onChange={this.handleInputChange}
+                    style={{ maxWidth: '200px', textAlign: 'center' }}></input>
+                <button type='submit'>Search</button>
             </form>
-        )
+        );
     }
 }
 
-SearchBar = reduxForm({
-    form: 'searchBar'
-})(SearchBar);
+const mapStateToProps = state => {
+    return {
+        history: state.searches,
+        results: state.data
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        searchData: (terms) => { dispatch(searchData(terms)) },
+        fetchData: (query) => dispatch(fetchData(query))
+    }
+}
 
 
-export default SearchBar;
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
