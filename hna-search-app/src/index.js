@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
 
+//Main index, creates the store and displays the app page
+
 
 ReactDOM.render(
   <Provider store={store}>

@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/fetchData';
 import { Link } from 'react-router-dom';
 
+//this page is the main home page for the application.
+
 class HomePage extends Component {
     render() {
         return (

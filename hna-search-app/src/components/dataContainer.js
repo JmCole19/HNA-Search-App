@@ -6,6 +6,8 @@ import { Button } from 'react-bootstrap';
 
 class DataContainer extends Component {
 
+    //the Handle search results function displays results from the most recently searched item
+
     handleSearchResults = () => {
         if (this.props.length === 0) {
             return (

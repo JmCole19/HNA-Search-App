@@ -8,14 +8,14 @@ class SearchBar extends Component {
         currentInput: ''
     }
 
-
+//handles new inputs and updates the current search
     handleInputChange = (event) => {
         let newInput = event.target.value;
         this.setState({
             currentInput: newInput
         });
     }
-
+//handles the submit function and starts the results process
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.searchData(this.state.currentInput)

@@ -6,6 +6,8 @@ import {
     NEW_SEARCH
 } from './types';
 
+
+//fetches data from the API based on the search input
 export const fetchData = (query) => {
     return (dispatch) => {
         dispatch(fetchDataRequest())
@@ -20,20 +22,20 @@ export const fetchData = (query) => {
             })
     }
 }
-
+//requesting data
 export const fetchDataRequest = () => {
     return {
         type: FETCH_DATA_REQUEST
     }
 }
-
+//if successful, creates a data payload
 const fetchDataSuccess = posts => {
     return {
         type: FETCH_DATA_SUCCESS,
         payload: posts
     }
 }
-
+//otherwise creates an error
 const fetchDataFailure = error => {
     return {
         type: FETCH_DATA_FAILURE,
@@ -41,7 +43,7 @@ const fetchDataFailure = error => {
     }
 }
   
-
+//handles the search
 export const searchData = terms => {
     return {
         type: NEW_SEARCH,

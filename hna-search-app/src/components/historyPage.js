@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+//This displays recent searches and updates the list after each search.
+
 class HistoryPage extends Component {
     render() {
         const { history } = this.props;

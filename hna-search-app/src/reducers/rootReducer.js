@@ -5,6 +5,9 @@ import {
     NEW_SEARCH
 } from "../actions/types";
 
+//Applications reducer, handles the data pulled from the API and maps it to its respective array
+
+//defines initial state
 const initState = {
     loading: false,
     posts: [],

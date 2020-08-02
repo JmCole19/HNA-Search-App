@@ -3,7 +3,9 @@ import './App.css';
 import HomePage from './components/homePage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HistoryPage from './components/historyPage'
+import HistoryPage from './components/historyPage';
+
+//main application page, handles displaying all information
 
 function App() {
   return (
