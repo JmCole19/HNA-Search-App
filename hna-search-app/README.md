@@ -26,5 +26,4 @@ All information is saved and stored in the Redux state of the application, which
 [Jason Coleman](https://github.com/JmCole19) |
 --- |
 [LinkedIn](https://www.linkedin.com/in/jason-coleman-3a77a2185/) |
---- |
 ![Profile Picture](https://avatars3.githubusercontent.com/u/39313528?s=200&u=b046ec7eefe2d410907a9d7cd0fae76a629183af&v=4) |
