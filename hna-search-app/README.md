@@ -1,6 +1,6 @@
 # HNA-Search-App
 
-[Jason Coleman](mailto:jayemcee121@gmail.com)
+Email me at: [Jason Coleman](mailto:jayemcee121@gmail.com)
 
 ## Setup
 
