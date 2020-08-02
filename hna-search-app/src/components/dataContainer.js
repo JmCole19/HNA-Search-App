@@ -12,25 +12,26 @@ class DataContainer extends Component {
                 <div> No results!</div>
             )
         } else {
-            const results = this.props;
+            const { results } = this.props;
+            console.log(this.props)
             return (
                 <div>
-                        <h1>Posts</h1>
-                        {results && results.posts && results.posts.map(result =>
-                            <div className="cardDiv" key={result.objectID}>
-                                <Card className='mx-auto' style={{ width: '700px', marginBottom: '20px' }}>
-                                    <Card.Header>By: {result.author}</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>{result.title}</Card.Title>
-                                        <Card.Text>
-                                            {result.body}
-                                        </Card.Text>
-                                        <Button variant="primary" href={result.url}>See Article</Button>
-                                    </Card.Body>
-                                </Card>
-                                {'\n'}
-                            </div>)}
-                    </div>
+                    <h1>Posts</h1>
+                    {results.map(result =>
+                        <div className="cardDiv" key={result.objectID}>
+                            <Card className='mx-auto' style={{ width: '700px', marginBottom: '20px' }}>
+                                <Card.Header>By: {result.author}</Card.Header>
+                                <Card.Body>
+                                    <Card.Title>{result.title}</Card.Title>
+                                    <Card.Text>
+                                        {result.body}
+                                    </Card.Text>
+                                    <Button variant="primary" href={result.url}>See Article</Button>
+                                </Card.Body>
+                            </Card>
+                            {'\n'}
+                        </div>)}
+                </div>
             )
         }
     }
@@ -39,10 +40,10 @@ class DataContainer extends Component {
         return this.props.loading ? (
             <h2>Loading...</h2>
         ) : this.props.error ? (
-            <h2>{this.props.error}</h2>
+            <h2>{this.error}</h2>
         ) : (
                     <div>
-                        {this.handleSearchResults()}
+                        <div>{this.handleSearchResults()}</div>
                     </div>
                 )
     }
@@ -50,7 +51,7 @@ class DataContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        results: state.data
+        results: state.posts
     }
 }
 

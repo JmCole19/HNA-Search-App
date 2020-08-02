@@ -23,6 +23,7 @@ const reducer = (state = initState, action) => {
             return {
                 loading: false,
                 posts: action.payload.hits,
+                history: [...state.history, action.terms],
                 error: ''
             }
         case FETCH_DATA_FAILURE:

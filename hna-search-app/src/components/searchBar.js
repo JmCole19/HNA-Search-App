@@ -39,7 +39,7 @@ class SearchBar extends Component {
 
 const mapStateToProps = state => {
     return {
-        history: state.searches,
+        history: state.history,
         results: state.data
     };
 }
