@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/HNA-Search-App/static/css/main.5f361e03.chunk.css",
+    "main.js": "/HNA-Search-App/static/js/main.1d24b8f7.chunk.js",
+    "main.js.map": "/HNA-Search-App/static/js/main.1d24b8f7.chunk.js.map",
+    "runtime-main.js": "/HNA-Search-App/static/js/runtime-main.42cc4cea.js",
+    "runtime-main.js.map": "/HNA-Search-App/static/js/runtime-main.42cc4cea.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/HNA-Search-App/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.85fc9e09.chunk.js": "/HNA-Search-App/static/js/2.85fc9e09.chunk.js",
+    "static/js/2.85fc9e09.chunk.js.map": "/HNA-Search-App/static/js/2.85fc9e09.chunk.js.map",
+    "index.html": "/HNA-Search-App/index.html",
+    "precache-manifest.8d2abe4d6eb28f60d40d2885850a1ae7.js": "/HNA-Search-App/precache-manifest.8d2abe4d6eb28f60d40d2885850a1ae7.js",
+    "service-worker.js": "/HNA-Search-App/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/HNA-Search-App/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/HNA-Search-App/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.85fc9e09.chunk.js.LICENSE.txt": "/HNA-Search-App/static/js/2.85fc9e09.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42cc4cea.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.85fc9e09.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.1d24b8f7.chunk.js"
+  ]
+}
